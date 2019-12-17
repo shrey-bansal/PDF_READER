@@ -1,266 +1,221 @@
-REPORT DOCUMENTATION PAGE
-Form Approved
-OMB No. 0704-0188
-1. AGENCY USE ONLY (Leave blank) 2. REPORT DATE 3. REPORT TYPE AND DATES COVERED
-June 2016 July 2012 – April 2015
-4. TITLE AND SUBTITLE 5. FUNDING NUMBERS
-Assessment of Safety Standards for Automotive Electronic Control Systems Intra-Agency Agreement
-6. AUTHOR HS8AA1
-Qi D. Van Eikema Hommes DTNH22-12-V-00086
-7. PERFORMING ORGANIZATION NAME(S) AND ADDRESS(ES) 8. PERFORMING ORGANIZATION
-John A. Volpe National Transportation Systems Center REPORT NUMBER
-U.S. Department of Transportation  DOT-VNTSC-NHTSA-13-03
-Office of the Assistant Secretary for Research and Technology
-55 Broadway
-"Cambridge, MA 02142"
-9. SPONSORING/MONITORING AGENCY NAME AND ADDRESS 10. SPONSORING/MONITORING
-National Highway Traffic Safety Administration  AGENCY REPORT NUMBER
-1200 New Jersey Avenue SE. DOT HS 812 285
-"Washington, DC 20590"
-11. SUPPLEMENTARY NOTES
-12a. DISTRIBUTION/AVAILABILITY STATEMENT 12b. DISTRIBUTION CODE
-This document is available to the public through the National Technical Information Service
-www.ntis.gov
-13. ABSTRACT
-This report summarizes the results of a study that assessed and compared six industry and government safety standards relevant to
-the safety and reliability of automotive electronic control systems. These standards include ISO 26262 (Road Vehicles - Functional
-"Safety), MIL-STD-882E (Department of Defense Standard Practice, System Safety), DO-178C (Software Considerations in"
-"Airborne Systems and Equipment Certification), Federal Motor Vehicle Safety Standards, AUTOSAR (Automotive Open System"
-"Architecture), and MISRA C (Guidelines for the Use of the C Language in Critical Systems). The assessment was carried out along"
-"the following 11 dimensions: (1) type of standard, (2) definition of safety and hazard, (3) identification of safety requirements, (4)"
-"hazard and safety analysis methods, (5) management of safety requirements, (6) risk assessment approach, (7) design for safety"
-"approach, (8) software safety, (9) system lifecycle consideration, (10) human factors consideration, and (11) approach for review,"
-"audit, and certification. The observed strengths and limitations of the standards studied in this report could support the future"
-development of a robust functional safety approach for automotive electronic control systems.
-14. SUBJECT TERMS 15. NUMBER OF PAGES
-"Automotive Electronics, Automotive Electronic Control Systems, Functional Safety, Electronics 49"
-"Reliability, Automotive Electronics Safety Standards 16. PRICE CODE"
-""
-17. SECURITY CLASSIFICATION 18. SECURITY CLASSIFICATION 19. SECURITY CLASSIFICATION 20. LIMITATION OF ABSTRACT
-OF REPORT OF THIS PAGE OF ABSTRACT
-Unclassified Unclassified Unclassified
-Standard,Safety Hazard
-ISO 26262,Absence of unreasonable risk. Potential source of harm caused by
-"",malfunctioning behavior of the item.
-"",
-"",Malfunctioning Behavior: failure or
-"",unintended behavior of an item with
-"",respect to its design intent.
-MIL-STD-,Freedom from conditions that can cause A real or potential condition that
-882E,"death, injury, occupational illness, could lead to an unplanned event or"
-"","damage to or loss of equipment or series of events (i.e., mishap)"
-"","property, or damage to the environment. resulting in death, injury,"
-"","occupational illness, damage to or"
-"","loss of equipment or property, or"
-"",damage to the environment.
-DO-178C,No clear definition provided. Based on No definition provided.
-"",Failure Condition Category in the
-"","standard, the definition is similar to MIL-"
-"",STD-882E.
-FMVSS,The rulemaking process (pursuant to the statutory definition of the need for motor
-"",vehicle safety) considers the potential hazards that might occur and their safety
-"","implications. However, once the standard is established, one complies with the"
-"",standard based on meeting the established performance requirements rather than
-"",analyzing potential hazards and their safety implications on a case-by-case basis.
-AUTOSAR,Same as ISO 26262. Same as ISO 26262.
-MISRA C,No explicit definition. No explicit definition.
-Measure,ISO 26262,MIL-STD-882E,MIL-STD-882E,DO-178C
-"",Hardware,for Hardware,for Software,(Software
-"",and Software,,,only)
-Severity,√,√,√,√
-Probability of,√,,,
-Operational Scenario,,,,
-(Exposure),,,,
-Probability of Mishap,,√,,
-Occurrence,,,,
-Controllability,√,,,
-Software Control,,,√,
-Category,,,,
-"",MIL-STD-,,,,
-"",882E,DO-178C,ISO 26262,AUTOSAR,MISRA C
-Type of,Process,Process,Process and,Design,Design (coding)
-Standard,,,method,(architecture),
-Definition of,Freedom from,No clear,Absence of,Same as ISO,No explicit
-Safety,conditions that,definition,unreasonable,26262.,definition.
-"","can cause death,",provided. Based,risk.,,
-"","injury,",on Failure,,,
-"",occupational,Condition,,,
-"","illness, damage",Category,,,
-"",to or loss of,"(Figure 37), the",,,
-"",equipment or,definition is,,,
-"","property, or",similar to MIL-,,,
-"",damage to the,STD-882E.,,,
-"",environment.,,,,
-"",MIL-STD-,,,,
-"",882E,DO-178C,ISO 26262,AUTOSAR,MISRA C
-Definition of,A real or,No definition,Potential source,Same as ISO,No explicit
-Hazard,potential,provided.,of harm caused,26262.,definition.
-"",condition that,,by,,
-"",could lead to an,,malfunctioning,,
-"",unplanned event,,behavior of the,,
-"",or series of,,item,,
-"","events (i.e.,",,,,
-"",mishap),,Malfunctioning,,
-"",resulting in,,Behavior:,,
-"","death, injury,",,failure or,,
-"",occupational,,unintended,,
-"","illness, damage",,behavior of an,,
-"",to or loss of,,item with,,
-"",equipment or,,respect to its,,
-"","property, or",,design intent.,,
-"",damage to the,,,,
-"",environment.,,,,
-"",MIL-STD-,,,,
-"",882E,DO-178C,ISO 26262,AUTOSAR,MISRA C
-Identification,Functional,Assumes,At high level of,Focused on,Focused on
-of Safety,hazard analysis,software,"the system, use",architecture,coding standard.
-Requirements,on predefined,requirements are,hazard analysis,design,
-"",nominal system,flowed down,method.,requirements.,
-"",functions is used,from system-,,Depend on ISO,
-"",to identify,"level activities,",At lower levels,26262 to,
-"",safety hazards.,and provides no,"of the system,",identify safety,
-"",,guidance on,use safety,requirements.,
-"",,how to further,analysis,,
-"",,decompose the,methods.,,
-"",,requirements,,,
-"",,and identify,,,
-"",,additional,,,
-"",,safety-critical,,,
-"",,requirements at,,,
-"",,each level of the,,,
-"",,system,,,
-"",,decomposition,,,
-"",,hierarchy.,,,
-"",MIL-STD-,,,,
-"",882E,DO-178C,ISO 26262,AUTOSAR,MISRA C
-Hazard and,Functional,Not discussed.,Hazard Analysis,Not discussed.,Not discussed.
-Safety Analysis,hazard analysis,,includes:,,
-Methods,on predefined,,"brainstorming,",,
-"",nominal system,,"checklists,",,
-"",functions is used,,"quality history,",,
-"",to identify,,Failure Models,,
-"",safety hazards.,,and Effects,,
-"",,,"Analysis, and",,
-"",,,field studies.,,
-"",,,,,
-"",,,Safety Analysis,,
-"",,,include: Failure,,
-"",,,Modes and,,
-"",,,Effects,,
-"",,,"Analysis, Fault",,
-"",,,"Tree Analysis,",,
-"",,,Event Tree,,
-"",,,"Analysis, and",,
-"",,,Hazard and,,
-"",,,Operability,,
-"",,,"Analysis,",,
-"",,,"Markov Model,",,
-"",,,Reliability,,
-"",,,"Block Diagram,",,
-"",,,etc.,,
-Management of,Hazard Tracking,Safety,Safety,Not discussed.,Not discussed.
-Safety,System used,requirements,requirements,,
-Requirements,separately from,and regular,and regular,,
-"",other,system,system,,
-"",requirements,requirements are,requirements are,,
-"",management,managed,managed,,
-"",system.,together.,together.,,
-"",MIL-STD-,,,,
-"",882E DO-178C,ISO 26262,,AUTOSAR,MISRA C
-Risk,For general Only considers,Uses three,,Not applicable.,Not applicable.
-Assessment,"system: Severity severity, no",dimensions—,,,
-"",and Probability probability,"Severity,",,,
-"",of occurrence assessment.,"Exposure, and",,,
-"",,Controllability,,,
-"",For software: Hazards are,to generate,,,
-"",Severity and considered to be,ASIL-,,,
-"",Software caused by,Automotive,,,
-"",Control software,Safety Integrity,,,
-"",Category (no behavior,Level.,,,
-"",probability) inconsistent,,,,
-"",with specified,Uses the term of,,,
-"","Uses the term of requirements,",“acceptable,,,
-"",“acceptable assuming all,"risk,” without",,,
-"","risk,” but safety",sufficiently,,,
-"",mentions user requirements are,precise,,,
-"",involvement in identified,definition.,,,
-"",decision. already.,,,,
-"",Accepts both Accepts both qualitative and qualitative and quantitative quantitative probability probability assessment. assessment.,,,,
-"",,,,,
-"",,Suggests ASIL,,,
-"",,decomposition,,,
-"",,for all hardware,,,
-"",,and software.,,,
-"",MIL-STD-,,,,
-"",882E,DO-178C,ISO 26262,AUTOSAR,MISRA C
-Design for,Thoroughly,Not explicitly,No explicit,Good,Good coding
-Safety,discussed,discussed.,discussion.,architecture may,practice will
-Approach,starting with,,Focus on safety,prevent hazards.,reduce errors in
-"",prevention and,,mechanism.,,software.
-"",elimination.,,,,
-"",,,,,
-Software Safety,Same as,Follows the,Follows the,Not applicable.,Coding
-"",Hardware,systems,systems,,standards.
-"",Development,engineering,engineering,,
-"","Process,",process.,process.,,
-"",following the,,,,
-"",systems,Uses the,Uses the,,
-"",engineering,concept of,concept of,,
-"",process.,Software,Software Fault.,,
-"",,Anomaly.,,,
-System,Prompts,Focuses on,Considers,Focuses on,Not applicable.
-Lifecycle,considerations,software,lifecycle of the,"reusability,",
-Consideration,for various,lifecycle,"system,",modifiability.,
-"",aspects after,considerations,including,,
-"",system is in,"such as coding,","manufacturing,",,
-"","operation, but",configuration,but does not,,
-"",does not,"management,",explicitly,,
-"",mention safety,etc.,discuss the,,
-"",considerations,,safety of human,,
-"",for the,,operators and,,
-"",manufacturing,,"maintainers, and",,
-"",process.,,the,,
-"",,,environmental,,
-"",,,hazard.,,
-"",MIL-STD-,,,,
-"",882E,DO-178C,ISO 26262,AUTOSAR,MISRA C
-Human Factors,Emphasized,Not discussed.,Not emphasized.,Not discussed.,Not discussed.
-Considerations,throughout the,,Only,,
-"",standard.,,controllability,,
-"",,,assessment in,,
-"",,,ASIL relates to,,
-"",,,human factors.,,
-"",MIL-STD-,,,,
-"",882E,DO-178C,ISO 26262,AUTOSAR,MISRA C
-"Review, Audit,",Supports,The certification,Independent,Not for safety,Supports
-and,government,authorities,confirmation,approval or,software quality
-Certification,"reviews, audits,",consider the,"reviews, safety",certification.,system by
-"","and boards, but",software as part,"audits, and",,contributing to
-"",details to be,of the airborne,safety,,the
-"",specified in,system or,assessments are,,documentation;
-"",Request for,equipment,required for,,"but, not used for"
-"",Proposal and,installed on the,various ASIL.,,software safety
-"",Statement or,certified,,,certification.
-"",Work for each,"product, and do",No safety,,
-"",project.,not certify the,certification,,
-"",Specifics are left,software as a,requirement.,,
-"",up to the,"unique, stand-",,,
-"",program,alone product.,,,
-"",manager and,Systems and,,,
-"",contractor.,"equipment,",,,
-"",,including,,,
-"",,embedded,,,
-"",,"software, should",,,
-"",,"be ""approved""",,,
-"",,and then,,,
-"",,accepted as a,,,
-"",,part of a,,,
-"",,certification.,,,
-"",,Approval is,,,
-"",,given dependent,,,
-"",,upon successful,,,
-"",,demonstration,,,
-"",,or review of,,,
-"",,products of the,,,
-"",,software,,,
-"",,lifecycle.,,,
+BREADS & CEREALS,Portion size *,per 100 grams (3.5 oz),,energy content
+Bagel ( 1 average ),140 cals (45g),310 cals,,Medium
+Biscuit digestives,86 cals (per biscuit),480 cals,,High
+Jaffa cake,48 cals (per biscuit),370 cals,,Med-High
+Bread white (thick slice),96  cals (1 slice 40g),240 cals,,Medium
+Bread wholemeal (thick),88  cals (1 slice 40g),220 cals,,Low-med
+Chapatis,250 cals,300 cals,,Medium
+Cornflakes,130  cals (35g),370 cals,,Med-High
+Crackerbread,17 cals per slice,325 cals,,Low Calorie
+Cream crackers,35 cals (per cracker),440 cals,,Low / portion
+Crumpets,93 cals (per crumpet),198 cals,,Low-Med
+Flapjacks basic fruit mix,320 cals,500 cals,,High
+Macaroni (boiled),238 cals (250g),95 cals,,Low calorie
+Muesli,195  cals (50g),390 cals,,Med-high
+Naan bread (normal),300 cals (small plate size),320 cals,,Medium
+Noodles (boiled),175 cals (250g),70 cals,,Low calorie
+Pasta ( normal boiled ),330 cals (300g),110 cals,,Low calorie
+Pasta (wholemeal boiled ),315 cals (300g),105 cals,,Low calorie
+Porridge oats (with water),193 cals (350g),55 cals,,Low calorie
+Potatoes** (boiled),210 cals (300g),70 cals,,Low calorie
+Potatoes** (roast),420 cals (300g),140 cals,,Medium
+Rice (white boiled),420 cals (300g),140 cals,Low calorie
+Rice (egg-fried),500 cals,200 cals,High in portion
+Rice ( Brown ),405 cals (300g),135 cals,Low calorie
+Rice cakes,28 Cals = 1 slice,373 Cals,Medium
+Ryvita Multi grain,37 Cals per slice,331 Cals,Medium
+Ryvita + seed & Oats,180 Cals 4 slices,362 Cals,Medium
+Spaghetti (boiled),303 cals (300g),101 cals,Low calorie
+Meats & Fish,Portion size *,per 100 grams (3.5 oz),,energy content
+Anchovies tinned,300 cals,300 cals,,Medium
+Bacon average fried,250 cals (2 rashers),500 cals,,High
+Bacon average grilled,150 cals,380 cals,,Med-High
+Beef (roast),300 cals,280 cals,,Medium
+Beef burgers frozen,320 cals,280 cals,,Med-High
+Chicken,220 cals,200 cals,,Medium
+Cockles,50 cals,50 cals,,Low
+Cod fresh,150 cals,100 cals,,Low calorie
+Cod chip shop food,400 cals,200 cals,,Med-High
+Crab fresh,200 cals,110 cals,,low calorie
+Duck roast,400 cals,430 cals,,High
+Fish cake,90 cals per cake,200 cals,Medium
+Fish fingers,50 cals per piece,220 cals,Medium
+Gammon,320 cals,280 cals,Med-High
+Haddock fresh,200 cals,110 cals,Low calorie
+Halibut fresh,220 cals,125 cals,Low calorie
+Ham,6 cals,240 cals,Medium
+Herring fresh grilled,300 cals,200 cals,Medium
+Kidney,200 cals,160 cals,Medium
+Kipper,200 cals,120 cals,Low calorie
+Liver,200 cals,150 cals,Medium
+Liver pate,150 cals,300 cals,Medium
+Lamb (roast),300 cals,300 cals,Med-High
+Lobster boiled,200 cals,100 cals,Low calorie
+Luncheon meat,300 cals,400 cals,High
+Mackeral,320 cals,300 cals,Medium
+Mussels,90 cals,90 cals,Low-Med
+Pheasant roast,200 cals,200 cals,Medium
+Pilchards (tinned),140 cals,140 cals,Medium
+Prawns,180 cals,100 cals,Low- Med
+Pork,320 cals,290 cals,Med-High
+Pork pie,320 cals,450 cals,High
+Rabbit,200 cals,180 cals,Medium
+Salmon fresh,220 cals,180 cals,Medium
+Sardines tinned in oil,220 cals,220 cals,Medium
+Sardines in tomato sauce,180 cals,180 cals,Medium
+Sausage pork fried,250 cals,320 cals,High
+Sausage pork grilled,220 cals,280 cals,Med-High
+Sausage roll,290 cals,480 cals,High
+Scampi fried in oil,400 cals,340 cals,High
+Steak & kidney pie,400 cals,350 cals,High
+Taramasalata,130 cals,490 cals,High
+Trout fresh,200 cals,120 cals,Low calorie
+Tuna tinned water,100 cals,100 cals,Low calorie
+Tuna tinned oil,180 cals,180 cals,Medium
+Turkey,200 cals,160 cals,Medium
+Veal,300 cals,240 cals,Medium
+Fruits & Vegetables,Portion size *,per 100 grams (3.5 oz),,energy content
+Apple,44 calories,44 calories,,Low calorie
+Banana,107 cals,65 calories,,Low calorie
+Beans baked beans,170 cals,80 calories,,Low calorie
+Beans dried (boiled),180 cals,130 calories,,Low calorie
+Blackberries,25 cals,25 calories,,Low calorie
+Blackcurrant,30 cals,30 calories,,Low calorie
+Broccoli,27 cals,32 cals,,Very low
+Cabbage (boiled),15 calories,20 calories,,Low calorie
+Carrot (boiled),16 calories,25 calories,,Low calorie
+Cauliflower (boiled),20 calories,30 calories,,Low calorie
+Celery (boiled),5 calories,10 calories,,Low calorie
+Cherry,35 calories,50 calories,,Low calorie
+Courgette,8 cals,20 cals,,Very low cal
+Cucumber,3 calories,10 calories,,Low calorie
+Dates,100 calories,235 calories,,Med-High
+Grapes,55 calories,62 calories,,Low calorie
+Grapefruit,32 calories,32 calories,,Low calorie
+Kiwi,40 calories,50 calories,,Low calorie
+Leek (boiled),10 calories,20 calories,,Low calorie
+Lentils (boiled),150 calories,100 calories,Medium
+Lettuce,4 calories,15 calories,Very Low
+Melon,14 calories,28 calories,Medium
+Mushrooms raw one,,,
+average,3 cals,15 cals,Very low cal
+Mushrooms (boiled),12 calories,12 calories,Low calorie
+Mushrooms (fried),100 calories,145 calories,High
+Olives,50 calories,80 calories,Low calorie
+Onion (boiled),14 calories,18 calories,Low calorie
+One red Onion,49 cals,33 cals,Low calorie
+Onions spring,3 cals,25 cals,Very low cal
+Onion (fried),86 calories,155 calories,High
+Orange,40 calories,30 calories,Low calorie
+Peas,210 calories,148 calories,Medium
+Peas dried & boiled,200 calories,120 calories,Low calorie
+Peach,35 calories,30 calories,Low calorie
+Pear,45 calories,38 calories,Low calorie
+Pepper yellow,6 cals,16 cals,Very low
+Pineapple,40 calories,40 calories,Low calorie
+Plum,30 calories,39 calories,Low calorie
+Spinach,8 calories,8 calories,Low calorie
+Strawberries (1 average),10 calories,30 calories,Low calorie
+Sweetcorn,95 calories,130 calories,Medium
+Sweetcorn on the cob,70 calories,70 calories,Low calorie
+Tomato,30 calories,20 calories,Low calorie
+Tomato cherry,6 cals ( 3 toms),17 Cals,Very low cal
+Tomato puree,70 calories,70 calories,Low-Medium
+Watercress,5 calories,20 calories,Low calorie
+Milk & Dairy produce,Portion size *,per 100 grams (3.5 oz),,energy content
+Cheese average,110 cals (25g),440 cals,,High
+Cheddar types average reduced,,,,
+fat,130,260 calories,,Medium
+Cheese spreads average,90 cals,270,,Medium
+Cottage cheese low fat,40 calories,80 cals,,low - med
+Cottage cheese,49 cals,98 cals,,Low calorie
+Cream cheese,200 cals,428 cals,,High
+Cream fresh half,128 cals,160 cals,,Med-High
+Cream fresh single,160 cals,200 cals,,Med-High
+Cream fresh double,340 cals,430 cals,,High
+Cream fresh clotted,480 cals,600 cals,,High
+Custard,210 cals,100 cals,,Medium
+Eggs ( 1 average size),90 cals,150 cals,,Medium
+Eggs fried,120 cals,180 cals,,Med-High
+Fromage frais,125 cals,125 cals,,Low calorie
+Ice cream,200 cals,180 cals,,Medium
+Milk whole,175 cals (250ml/half pint),70 cals,,Med-High
+Milk semi-skimmed,125 cals (250ml/half pint),50 cals,,Medium
+Milk skimmed,95 cals (250ml/half pint),38 cals,,Low calorie
+Milk Soya,90 cals,36 cals,,Low calorie
+Mousse flavored,120 cals,140 cals,,Medium
+Omelette with cheese,300 cals,266 cals,,Medium
+Trifle with cream,290 cals,190 cals,,Medium
+Yogurt natural,90 cals,60 cals,,Low calorie
+Yogurt reduced fat,70 cals,45 cals,,Low calorie
+Fats & Sugars,Portion size *,per 100 grams (3.5 oz),,energy content
+PURE FAT,9 cals (1 gram),900 cals,,High
+Bombay mix,250 cals,500 cals,,High
+Butter,112 cals,750 cals,,High
+Chewing gum,8 cals per piece,-,,Low calorie
+Chocolate,200 cals,500 cals,,High
+Cod liver oil,135 cals (1 tbspoon),900 cals,,High
+Corn snack,125 cals,500 cals,,High
+Crisps (chips US) average,100 cals,500 cals,,High
+Honey,42 cals,280 cals,,Medium
+Jam,38 cals,250 cals,,Medium
+Lard,225 cals,890 cals,,High
+Low fat spread,50 cals,400 cals,,High
+Margarine,50 cals,750 cals,,High
+Mars bar,240 cals,480 cals,,Med-High
+Mint sweets,10 cals per piece,-,,High
+"Oils -corn, sunflower, olive",135 cals (1 Tbspoon),900 cals,,High
+Popcorn average,150 cals,460 cals,,High
+Sugar white table sugar,20 cals (1 tspoon),400 cals,,Medium
+Sweets (boiled),100 cals,300 cals,,Med-High
+Syrup,15 cals,300 cals,,Medium
+Toffee,100 cals,400 cals,,High
+Fruit,Calories per piece,Carbs (grams),Water Content
+Apple (1 average),44 calories,10.5,85 %
+Apple cooking,35 calories,9,88 %
+Apricot,30 calories,6.7,85 %
+Avocado,150 calories,2,60 %
+Banana,107 calories,26,75 %
+Blackberries each,1 calorie,0.2,85 %
+Blackcurrant each,1.1 calorie,0.25,77 %
+Blueberries  (new) 100g,49 Cals ( 100g ),15 g,81 %
+Cherry each,2.4 calories,0.6,83 %
+Clementine,24 cals,5,66 %
+Currants,5 calories,1.4,16 %
+Damson,28 calories,7.2,70 %
+One average date 5g,5 cals,1.2,14 %
+Dates with inverted sugar 100g,250 calories,63,12 %
+Figs,10 calories,2.4,24 %
+Gooseberries,2.6 calories,0.65,80 %
+Grapes 100g Seedless,50 cals,15,82 %
+one average Grape 6g,3 calories,0.9,82 %
+Grapefruit whole,100 calories,23,65 %
+Guava,24 calories,4.4,85 %
+Kiwi,34 calories,8,75 %
+Lemon,20 calories,3.4,85 %
+Lychees,3 calories,0.7,80 %
+Mango,40 calories,9.5,80 %
+Melon Honeydew (130g),36 calories,9,90 %
+Melon Canteloupe (130g),25 cals,6,93 %
+Nectarines,42 calories,9,80 %
+Olives,6.8 calories,trace,63 %
+Orange average,35 calories,8.5,73 %
+Orange large 350g,100 Cals,22g,75 %
+Papaya Diced (small handful),67 Cals  (20g),17g,-
+Passion Fruit,30 calories,3,50 %
+Paw Paw,28 calories,6,70 %
+Peach,35 calories,7,80 %
+Pear,45 calories,12,77 %
+Pineapple,50 calories,12,85 %
+Plum,25 calories,6,79 %
+Prunes,9 calories,2.2,37 %
+Raisins,5 calories,1.4,13 %
+Raspberries each,1.1 calories,0.2,87 %
+Rhubarb,8 calories,0.8,95 %
+Satsuma one average 112g,29 cals,6.5,88 %
+Satsumas 100g,35 calories,8.5,88 %
+Strawberries (1 average),2.7 calories,0.6,90 %
+Sultanas,5 calories,1.4,16 %
+Tangerine,26 calories,6,60 %
+Tomatoes (1 average size),9 cals,2.2,93 %
+Tomatoes Cherry (1 average size),2 calories,0.5,90 %

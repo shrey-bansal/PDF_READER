@@ -9,7 +9,7 @@ import xlwt
 
 
 # creating a pdf file object
-pdf_path = '812285_electronicsreliabilityreport.pdf'
+pdf_path = 'Food Calories List.pdf'
 pdfFileObj = open(pdf_path, 'rb')
 
 # creating a pdf reader object
