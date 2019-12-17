@@ -1,0 +1,7 @@
+tabula
+PyPDF2
+pandas as pd
+os
+glob
+csv
+xlwt
